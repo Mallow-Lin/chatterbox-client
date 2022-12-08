@@ -66,18 +66,23 @@ describe('chatterbox', function() {
 
   describe('chatroom behavior', function() {
     it('should be able to add messages to the DOM', function() {
+
       var message = {
         username: 'Mel Brooks',
         text: 'Never underestimate the power of the Schwartz!',
         roomname: 'lobby'
       };
-      MessagesView.renderMessage(message);
-      expect($('#chats').children().length).to.equal(1);
+      $(document).ready(function() {
+        MessagesView.renderMessage(message);
+        expect($('#chats').children().length).to.equal(1);
+      });
     });
 
     it('should be able to add rooms to the DOM', function() {
-      RoomsView.renderRoom('superLobby');
-      expect($('#rooms select').children().length).to.equal(1);
+      $(document).ready(function() {
+        RoomsView.renderRoom('superLobby');
+        expect($('#rooms select').children().length).to.equal(1);
+      });
     });
 
   });

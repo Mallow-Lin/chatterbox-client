@@ -12,25 +12,43 @@ var MessagesView = {
   },
 
   render: function (data) {
-
+    MessagesView.clearMessage();
     // TODO: Render _all_ the messages.
     // array of objects/messages
     //each message
     //add each to the $chat
-    console.log(data);
+    // console.log(data);
     _.each(data, function(message) {
       MessageView.render(message);
     });
-
+    /*var fakeMessage = {
+      campus: 'rpp',
+      'created_at': '2022-12-08T01:41:04.278Z',
+      'github_handle': 'chustanley',
+      'message_id': 79716,
+      roomname: '14',
+      text: '<h1 style="color: red">"You got hacked"</h1>',
+      'updated_at': '2022-12-08T01:41:04.278Z',
+      username: 'virus'
+    };
+    MessageView.render(fakeMessage);*/
   },
 
   renderMessage: function (message) {
     // TODO: Render a single message.
+    MessagesView.clearMessage();
+    MessageView.render(message);
+  },
 
+  clearMessage: function() {
+    $(document).ready(function() {
+      $('#chats').empty();
+    });
   },
 
   handleClick: function (event) {
     // TODO: handle a user clicking on a message
     // (this should add the sender to the user's friend list).
+
   }
 };
