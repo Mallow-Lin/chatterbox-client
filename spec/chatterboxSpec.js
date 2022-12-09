@@ -65,24 +65,25 @@ describe('chatterbox', function() {
   });
 
   describe('chatroom behavior', function() {
+    var message = {
+      username: 'Mel Brooks',
+      text: 'Never underestimate the power of the Schwartz!',
+      roomname: 'lobby'
+    };
+    MessagesView.renderMessage(message);
+    RoomsView.renderRoom('superLobby');
     it('should be able to add messages to the DOM', function() {
 
-      var message = {
-        username: 'Mel Brooks',
-        text: 'Never underestimate the power of the Schwartz!',
-        roomname: 'lobby'
-      };
-      $(document).ready(function() {
-        MessagesView.renderMessage(message);
-        expect($('#chats').children().length).to.equal(1);
-      });
+      // $(document).ready(function() {
+      // MessagesView.renderMessage(message);
+      expect(document.querySelector('#chats').children.length).to.equal(1);
+      // });
     });
 
     it('should be able to add rooms to the DOM', function() {
-      $(document).ready(function() {
-        RoomsView.renderRoom('superLobby');
-        expect($('#rooms select').children().length).to.equal(1);
-      });
+      //$(document).ready(function() {
+      expect(document.querySelector('#rooms select').children.length).to.equal(1);
+      //});
     });
 
   });

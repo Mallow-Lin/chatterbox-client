@@ -11,14 +11,14 @@ var MessagesView = {
     MessagesView.render();
   },
 
-  render: function (data) {
+  render: function () {
     MessagesView.clearMessage();
     // TODO: Render _all_ the messages.
     // array of objects/messages
     //each message
     //add each to the $chat
     // console.log(data);
-    _.each(data, function(message) {
+    _.each(App.data, function(message) {
       MessageView.render(message);
     });
     /*var fakeMessage = {

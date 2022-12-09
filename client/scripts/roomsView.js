@@ -12,15 +12,29 @@ var RoomsView = {
   },
 
   render: function() {
+    Rooms.updateList();
+    $(document).ready(function() {
+      Rooms.getList().forEach(function(curRoom) {
+        RoomsView.$select.append(curRoom);
+      });
+    });
     // TODO: Render out the list of rooms.
   },
 
   renderRoom: function(roomname) {
     // TODO: Render out a single room.
+    MessagesView.clearMessage();
+    $(document).ready(function() {
+      _each(App.data, function(message) {
+        if (message.roomname === roomname) {
+          MessagesView.renderMessage(message);
+        }
+      });
+    });
   },
 
   handleChange: function(event) {
-    // TODO: Handle a user selecting a different room.
+    console.log(event);
   },
 
   handleClick: function(event) {

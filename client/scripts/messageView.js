@@ -4,7 +4,10 @@
 //I - string //
 //O - string
 var escaper = function(string) {
-  var result = string.match(/[A-Z a-z 0-9]/g);
+  if (string === '' || string === null) {
+    return 'Empty Or Undefined';
+  }
+  var result = string.match(/[A-Z a-z 0-9 !]/g);
   result = result.join('');
   return result;
 };
@@ -23,7 +26,6 @@ var MessageView = {
     `)*/
   render: function(message) { //{} Appends everything
     $(document).ready(function() {
-
       var $chat = $('<div class="chat"></div>');
       var username = escaper(message.username);
       var $username = $(`<div class="username">${username}</div>`);
@@ -31,7 +33,6 @@ var MessageView = {
       var $text = (`<div class="text">${text}</div>`);
       $('#chats').append($chat);
       $chat.append([$username, $text]);
-
     });
   }
 };
