@@ -40,6 +40,7 @@ var RoomsView = {
     MessagesView.clearMessage();
     _.each(App.data, function(message) {
       var curRoom = escaper(message.roomname);
+
       if (curRoom === roomname) {
         MessagesView.renderMessage(message);
       }

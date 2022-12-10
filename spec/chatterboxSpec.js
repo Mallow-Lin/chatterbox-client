@@ -68,7 +68,8 @@ describe('chatterbox', function() {
     var message = {
       username: 'Mel Brooks',
       text: 'Never underestimate the power of the Schwartz!',
-      roomname: 'lobby'
+      roomname: 'lobby',
+      'created_at': new Date()
     };
     MessagesView.renderMessage(message);
     RoomsView.renderRoom(message.roomname);

@@ -23,12 +23,13 @@ var App = {
     // continually, instead of just once at the start.
   },
 
-  fetch: function(roomName = 'lobby') {
+  fetch: function(roomName = 'Lobby') {
     App.startSpinner();
     Parse.readAll((data) => {
       // examine the response from the server request:
       // TODO: Use the data to update Messages and Rooms
       App.data = data;
+      console.log(App.data);
       RoomsView.render();
       RoomsView.handleChange(roomName);
       App.stopSpinner();

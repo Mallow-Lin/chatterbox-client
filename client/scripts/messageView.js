@@ -11,7 +11,7 @@ window.escaper = function(string) {
   result = result.replace('>', '');
   result = result.replace('http', '');
   result = result.replace('www', '');
-  return result;
+  return result.trim();
 };
 var MessageView = {
   // Learn more about Underscore's templating capability
@@ -34,9 +34,10 @@ var MessageView = {
       }
       var $username = $(`<div class="username">${username}</div>`);
       var text = escaper(message.text);
-      var $text = (`<div class="text">${text}</div>`);
+      var $text = $(`<div class="text">${text}</div>`);
+      var $time = $(`<div class = "time">${jQuery.timeago(message.created_at)}</div>`);
       $('#chats').append($chat);
-      $chat.append([$username, $text]);
+      $chat.append([$username, $text, $time]);
     });
   }
 };

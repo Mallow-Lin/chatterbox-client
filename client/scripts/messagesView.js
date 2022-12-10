@@ -51,6 +51,7 @@ var MessagesView = {
     var username = event.currentTarget.innerHTML;
     console.log(username);
     Friends.toggleStatus(username);
+    Friends.render(username);
     App.fetch(RoomsView.$select.val());
   }
 };
