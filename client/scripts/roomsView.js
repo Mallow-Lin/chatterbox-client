@@ -23,22 +23,33 @@ var RoomsView = {
 
   renderRoom: function(roomname) {
     // TODO: Render out a single room.
-    MessagesView.clearMessage();
     $(document).ready(function() {
-      _each(App.data, function(message) {
-        if (message.roomname === roomname) {
-          MessagesView.renderMessage(message);
-        }
-      });
+      var $roomElement = $(`<option class="room">${roomname}</option>`);
+      RoomsView.$select.append($roomElement);
+      RoomsView.handleChange(roomname);
     });
   },
 
-  handleChange: function(event) {
-    console.log(event);
+  handleChange: function(specificRoom) {
+    var roomname = RoomsView.$select.val();
+    if (specificRoom !== undefined) {
+      roomname = specificRoom;
+      RoomsView.$select.val(specificRoom);
+    }
+    // TODO: Handle a user selecting a different room.
+    MessagesView.clearMessage();
+    _.each(App.data, function(message) {
+      var curRoom = escaper(message.roomname);
+      if (curRoom === roomname) {
+        console.log('happened');
+        MessagesView.renderMessage(message);
+      }
+    });
   },
 
   handleClick: function(event) {
     // TODO: Handle the user clicking the "Add Room" button.
+    Rooms.add();
   }
 
 };

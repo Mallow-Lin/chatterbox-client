@@ -36,7 +36,6 @@ var MessagesView = {
 
   renderMessage: function (message) {
     // TODO: Render a single message.
-    MessagesView.clearMessage();
     MessageView.render(message);
   },
 
@@ -49,6 +48,7 @@ var MessagesView = {
   handleClick: function (event) {
     // TODO: handle a user clicking on a message
     // (this should add the sender to the user's friend list).
-
+    var username = $(event.currentTarget).children()[0].innerHTML;
+    Friends.toggleStatus(username);
   }
 };

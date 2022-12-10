@@ -71,9 +71,8 @@ describe('chatterbox', function() {
       roomname: 'lobby'
     };
     MessagesView.renderMessage(message);
-    RoomsView.renderRoom('superLobby');
+    RoomsView.renderRoom(message.roomname);
     it('should be able to add messages to the DOM', function() {
-
       // $(document).ready(function() {
       // MessagesView.renderMessage(message);
       expect(document.querySelector('#chats').children.length).to.equal(1);

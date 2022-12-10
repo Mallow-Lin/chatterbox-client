@@ -1,7 +1,6 @@
 // This App object represents the Chatterbox application.
 // It should initialize the other parts of the application
 // and begin making requests to the Parse API for data.
-
 var App = {
   $spinner: $('.spinner img'),
 
@@ -29,8 +28,8 @@ var App = {
       // examine the response from the server request:
       // TODO: Use the data to update Messages and Rooms
       App.data = data;
-      MessagesView.render();
       RoomsView.render();
+      RoomsView.handleChange('lobby');
       App.stopSpinner();
       // and re-render the corresponding views.
     });
@@ -48,8 +47,13 @@ var App = {
 };
 
 $(document).ready(function() {
-  $('body').on('click', '.room', function(event) {
-    console.log(event);
-    RoomsView.handleChange(event);
+  $('#rooms select').on('change', function() {
+    RoomsView.handleChange();
+  });
+  $('#rooms button').on('click', function() {
+    RoomsView.handleClick();
+  });
+  $('#chats').on('click', '.chat', function(event) {
+    MessagesView.handleClick(event);
   });
 });

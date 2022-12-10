@@ -40,7 +40,7 @@ var FormView = {
     var message = {};
     message.text = text;
     message.username = App.username;
-    message.roomname = 'Lobby';
+    message.roomname = RoomsView.$select.val() !== null ? RoomsView.$select.val() : 'lobby';
     Parse.create(message);
   }
 };

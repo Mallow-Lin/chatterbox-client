@@ -3,15 +3,17 @@
 
 //I - string //
 //O - string
-var escaper = function(string) {
+window.escaper = function(string) {
   if (string === '' || string === null) {
-    return 'Empty Or Undefined';
+    return 'Empty';
   }
-  var result = string.match(/[A-Z a-z 0-9 !]/g);
-  result = result.join('');
+  var result = string.replace('<', '');
+  result = result.replace('>', '');
+  result = result.replace('http', '');
+  result = result.replace('www', '');
   return result;
-};
 
+};
 var MessageView = {
   // Learn more about Underscore's templating capability
   // here: https://underscorejs.org/#template.
