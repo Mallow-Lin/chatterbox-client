@@ -12,7 +12,6 @@ window.escaper = function(string) {
   result = result.replace('http', '');
   result = result.replace('www', '');
   return result;
-
 };
 var MessageView = {
   // Learn more about Underscore's templating capability
@@ -30,6 +29,9 @@ var MessageView = {
     $(document).ready(function() {
       var $chat = $('<div class="chat"></div>');
       var username = escaper(message.username);
+      if (Friends.isFriend(username)) {
+        $chat = $('<div class="chat friend"></div>');
+      }
       var $username = $(`<div class="username">${username}</div>`);
       var text = escaper(message.text);
       var $text = (`<div class="text">${text}</div>`);

@@ -41,7 +41,6 @@ var RoomsView = {
     _.each(App.data, function(message) {
       var curRoom = escaper(message.roomname);
       if (curRoom === roomname) {
-        console.log('happened');
         MessagesView.renderMessage(message);
       }
     });

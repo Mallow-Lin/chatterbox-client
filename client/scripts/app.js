@@ -23,14 +23,14 @@ var App = {
     // continually, instead of just once at the start.
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function(roomName = 'lobby') {
     App.startSpinner();
     Parse.readAll((data) => {
       // examine the response from the server request:
       // TODO: Use the data to update Messages and Rooms
       App.data = data;
       RoomsView.render();
-      RoomsView.handleChange('lobby');
+      RoomsView.handleChange(roomName);
       App.stopSpinner();
       // and re-render the corresponding views.
     });
@@ -54,7 +54,7 @@ $(document).ready(function() {
   $('#rooms button').on('click', function() {
     RoomsView.handleClick();
   });
-  $('#chats').on('click', '.chat', function(event) {
+  $('#chats').on('click', '.username', function(event) {
     MessagesView.handleClick(event);
   });
 });

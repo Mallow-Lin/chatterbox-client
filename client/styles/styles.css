@@ -81,6 +81,13 @@ form input[type=text] {
 .chat:hover {
     background-color: #ddd;
 }
+.chat .username:hover {
+    background-color: red;
+    border-radius: 100px;
+    width: 100px;
+    cursor: pointer;
+
+}
 
 .spinner {
     float: right;
